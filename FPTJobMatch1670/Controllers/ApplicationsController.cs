@@ -48,7 +48,7 @@ namespace FPTJobMatch1670.Controllers
 
             return View(application);
         }
-
+        [Authorize(Roles ="Seeker")]
         // GET: Applications/Create
         public IActionResult Create()
         {
