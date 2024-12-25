@@ -1,0 +1,42 @@
+﻿@model List<FPTJobMatch1670.Models.UserViewModel>
+
+@if (TempData["Message"] != null)
+{
+    <span class="alert alert-success">@TempData</span>
+}
+
+@if (TempData["Error"] != null)
+{
+    <span class="alert alert-danger">@TempData</span>
+}
+
+<h1 class="text text-primary mt-3 mb-3">UserList</h1>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>No.</th>
+            <th>Id</th>
+            <th>Email</th>
+            <th>Roles</th>
+            <th>Menu</th>
+        </tr>
+    </thead>
+    @{
+        var counter = 1;
+    }
+    <tbody>
+        @foreach (var user in Model)
+        {
+            <tr>
+                <td></td>
+                <td>@Html.DisplayFor(modelItem => user.Id)</td>
+                <td>@Html.DisplayFor(modelItem => user.Email)</td>
+                <td>@string.Join(", ", user.Roles)</td>
+                <td>
+                    <a class="btn btn-warning" asp-controller="Admin" asp-action="ResetPass" asp-route-id="@user.Id">Reset Password</a>
+                </td>
+                counter++;
+            </tr>
+        }
+    </tbody>
+</table>
